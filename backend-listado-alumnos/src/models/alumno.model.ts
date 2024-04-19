@@ -5,6 +5,7 @@ const AlumnoSchema = new Schema({
   apellido: {type: String, required: true},
   genero: {type: String, required: true},
   edad: {type: Number, required: true},
+  fechaNacimiento: {type: Date, required: true}, //
   direccion: {type: String, required: true},
   telefono: {type: Number, required: true},
   tipoDocumento: { type: String, required: true},
