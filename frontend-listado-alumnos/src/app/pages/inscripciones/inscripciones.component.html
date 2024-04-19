@@ -1,1 +1,84 @@
-<p>inscripciones works!</p>
+<div class="container">
+  <form
+    class="mx-5 mt-4 d-flex flex-column justify-content-center align-items-center"
+  >
+    <div class="d-flex justify-content-center align-items-center column-gap-4">
+      <div class="mb-3">
+        <label for="nombres" class="form-label">Nombres</label>
+        <input type="text" class="form-control" id="nombres" />
+      </div>
+
+      <div class="mb-3">
+        <label for="apellidos" class="form-label">Apellidos</label>
+        <input type="text" class="form-control" id="apellidos" />
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center column-gap-5">
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email</label>
+        <input
+          type="email"
+          class="form-control"
+          id="exampleInputEmail1"
+          aria-describedby="emailHelp"
+        />
+      </div>
+
+      <div class="mb-3">
+        <label for="genero" class="form-label">Genero</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected disabled>Seleccione genero</option>
+          <option value="masculino">Masculino</option>
+          <option value="femenino">Femenino</option>
+          <option value="no binario">No Binario</option>
+          <option value="multigenero">Multigénero</option>
+          <option value="intergenero">Intergénero</option>
+          <option value="otro">Otro</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center column-gap-5">
+      <div class="mb-3">
+        <label for="edad" class="form-label">Edad</label>
+        <input type="number" class="form-control" id="edad" />
+      </div>
+
+      <div class="mb-3">
+        <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
+        <input type="date" class="form-control" id="nacimiento" />
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center column-gap-4">
+      <div class="mb-3">
+        <label for="direccion" class="form-label">Dirección</label>
+        <input type="text" class="form-control" id="direccion" />
+      </div>
+
+      <div class="mb-3">
+        <label for="telefono" class="form-label">Telefono</label>
+        <input type="text" class="form-control" id="telefono" />
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-center align-items-center column-gap-4">
+      <div class="mb-3">
+        <label for="genero" class="form-label">Tipo documento</label>
+        <select class="form-select" aria-label="Default select example">
+          <option selected disabled>Seleccione documento</option>
+          <option value="registro civil">Registro Civil</option>
+          <option value="tarjeta identidad">Tarjeta de identidad</option>
+        </select>
+      </div>
+
+      <div class="mb-3">
+        <label for="numeroDocumento" class="form-label">No. Documento</label>
+        <input type="text" class="form-control" id="numeroDocumento" />
+      </div>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2 px-5">Enviar</button>
+  </form>
+</div>
