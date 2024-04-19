@@ -28,3 +28,21 @@ export const crearAlumnos = async (req: Request, res: Response) => {
     });
   }
 };
+
+// READ = Leer , Solicitar informacion al servidor, metodo get
+export const getAlumnos = async (req: Request, resp: Response) => {
+  try {
+    // El busca todos los clientes
+    const alumnos = await AlumnoModel.find();
+    resp.status(200).json({
+      ok: true,
+      alumnos,
+
+    })
+  } catch (error) {
+    resp.status(400).json({
+      ok: false,
+      cmsg: "Error al consultar los alumnos"
+    })
+  };
+};
