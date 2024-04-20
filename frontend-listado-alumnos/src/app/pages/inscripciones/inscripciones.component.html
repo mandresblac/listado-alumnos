@@ -1,84 +1,214 @@
 <div class="container">
+  <h2 class="fs-5 text-uppercase text-center mt-4">
+    Formulario de inscripción
+  </h2>
   <form
-    class="mx-5 mt-4 d-flex flex-column justify-content-center align-items-center"
+    [formGroup]="alumnoForm"
+    (submit)="agregarAlumno()"
+    class="mt-4 w-75 m-auto"
   >
-    <div class="d-flex justify-content-center align-items-center column-gap-4">
-      <div class="mb-3">
-        <label for="nombres" class="form-label">Nombres</label>
-        <input type="text" class="form-control" id="nombres" />
-      </div>
-
-      <div class="mb-3">
-        <label for="apellidos" class="form-label">Apellidos</label>
-        <input type="text" class="form-control" id="apellidos" />
-      </div>
+    <div class="mb-3">
+      <label for="nombres" class="form-label">Nombres</label>
+      <input
+        type="text"
+        class="form-control"
+        id="nombres"
+        formControlName="nombre"
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('nombre', 'required') || hasErrors('nombre', 'minlength')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('nombre', 'required')">
+        Nombres requeridos
+      </p>
+      <p class="text-danger" *ngIf="hasErrors('nombre', 'minlength')">
+        Nombres requiere mínimo 3 caracteres
+      </p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center column-gap-5">
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-        />
-      </div>
-
-      <div class="mb-3">
-        <label for="genero" class="form-label">Genero</label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Seleccione genero</option>
-          <option value="masculino">Masculino</option>
-          <option value="femenino">Femenino</option>
-          <option value="no binario">No Binario</option>
-          <option value="multigenero">Multigénero</option>
-          <option value="intergenero">Intergénero</option>
-          <option value="otro">Otro</option>
-        </select>
-      </div>
+    <div class="mb-3">
+      <label for="apellidos" class="form-label">Apellidos</label>
+      <input
+        type="text"
+        class="form-control"
+        id="apellidos"
+        formControlName="apellido"
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('apellido', 'required') ||
+            hasErrors('apellido', 'minlength')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('apellido', 'required')">
+        Apellido requerido
+      </p>
+      <p class="text-danger" *ngIf="hasErrors('apellido', 'minlength')">
+        Apellidos requiere mínimo 3 caracteres
+      </p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center column-gap-5">
-      <div class="mb-3">
-        <label for="edad" class="form-label">Edad</label>
-        <input type="number" class="form-control" id="edad" />
-      </div>
-
-      <div class="mb-3">
-        <label for="nacimiento" class="form-label">Fecha de nacimiento</label>
-        <input type="date" class="form-control" id="nacimiento" />
-      </div>
+    <div class="mb-3">
+      <label for="exampleInputEmail1" class="form-label">Email</label>
+      <input
+        type="email"
+        class="form-control"
+        id="exampleInputEmail1"
+        aria-describedby="emailHelp"
+        formControlName="email"
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('email', 'required') || hasErrors('email', 'email')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('email', 'email')">
+        Formato de email invalido
+      </p>
+      <p class="text-danger" *ngIf="hasErrors('email', 'required')">
+        Email requerido
+      </p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center column-gap-4">
-      <div class="mb-3">
-        <label for="direccion" class="form-label">Dirección</label>
-        <input type="text" class="form-control" id="direccion" />
-      </div>
-
-      <div class="mb-3">
-        <label for="telefono" class="form-label">Telefono</label>
-        <input type="text" class="form-control" id="telefono" />
-      </div>
+    <div class="mb-3">
+      <label for="genero" class="form-label">Genero</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        id="genero"
+        formControlName="genero"
+        [ngClass]="{
+          'is-invalid': hasErrors('genero', 'required')
+        }"
+      >
+        <option selected disabled>Seleccione genero</option>
+        <option value="masculino">Masculino</option>
+        <option value="femenino">Femenino</option>
+        <option value="no binario">No Binario</option>
+        <option value="multigenero">Multigénero</option>
+        <option value="intergenero">Intergénero</option>
+        <option value="otro">Otro</option>
+      </select>
+      <p class="text-danger" *ngIf="hasErrors('genero', 'required')">
+        Genero requerido
+      </p>
     </div>
 
-    <div class="d-flex justify-content-center align-items-center column-gap-4">
-      <div class="mb-3">
-        <label for="genero" class="form-label">Tipo documento</label>
-        <select class="form-select" aria-label="Default select example">
-          <option selected disabled>Seleccione documento</option>
-          <option value="registro civil">Registro Civil</option>
-          <option value="tarjeta identidad">Tarjeta de identidad</option>
-        </select>
-      </div>
-
-      <div class="mb-3">
-        <label for="numeroDocumento" class="form-label">No. Documento</label>
-        <input type="text" class="form-control" id="numeroDocumento" />
-      </div>
+    <div class="mb-3">
+      <label for="edad" class="form-label">Edad</label>
+      <input
+        type="number"
+        class="form-control"
+        id="edad"
+        formControlName="edad"
+        [ngClass]="{
+          'is-invalid': hasErrors('edad', 'required')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('edad', 'required')">
+        Edad requerida
+      </p>
     </div>
 
-    <button type="submit" class="btn btn-primary mt-2 px-5">Enviar</button>
+    <div class="mb-3">
+      <label for="fechaNacimiento" class="form-label"
+        >Fecha de nacimiento</label
+      >
+      <input
+        type="date"
+        class="form-control"
+        id="fechaNacimiento"
+        formControlName="fechaNacimiento"
+        [ngClass]="{
+          'is-invalid': hasErrors('fechaNacimiento', 'required')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('fechaNacimiento', 'required')">
+        Fecha de nacimiento requerida
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="direccion" class="form-label">Dirección</label>
+      <input
+        type="text"
+        class="form-control"
+        id="direccion"
+        formControlName="direccion"
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('direccion', 'required') ||
+            hasErrors('direccion', 'minlength')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('direccion', 'required')">
+        Dirección requerida
+      </p>
+      <p class="text-danger" *ngIf="hasErrors('direccion', 'minlength')">
+        Dirección requiere mínimo 3 caracteres
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="telefono" class="form-label">Telefono</label>
+      <input
+        type="text"
+        class="form-control"
+        id="telefono"
+        formControlName="telefono"
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('telefono', 'required') ||
+            hasErrors('telefono', 'minlength')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('telefono', 'required')">
+        Telefono requerido
+      </p>
+      <p class="text-danger" *ngIf="hasErrors('telefono', 'minlength')">
+        Telefono requiere mínimo 3 caracteres
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="genero" class="form-label">Tipo documento</label>
+      <select
+        class="form-select"
+        aria-label="Default select example"
+        formControlName="tipoDocumento"
+        [ngClass]="{
+          'is-invalid': hasErrors('tipoDocumento', 'required')
+        }"
+      >
+        <option selected disabled>Seleccione documento</option>
+        <option value="registro civil">Registro Civil</option>
+        <option value="tarjeta identidad">Tarjeta de identidad</option>
+      </select>
+      <p class="text-danger" *ngIf="hasErrors('tipoDocumento', 'required')">
+        Tipo de documento requerido
+      </p>
+    </div>
+
+    <div class="mb-3">
+      <label for="numeroDocumento" class="form-label">No. Documento</label>
+      <input
+        type="text"
+        class="form-control"
+        id="numeroDocumento"
+        formControlName="numeroDocumento"
+        [ngClass]="{
+          'is-invalid':
+            hasErrors('numeroDocumento', 'required') ||
+            hasErrors('numeroDocumento', 'minlength')
+        }"
+      />
+      <p class="text-danger" *ngIf="hasErrors('numeroDocumento', 'required')">
+        Número documento requerido
+      </p>
+      <p class="text-danger" *ngIf="hasErrors('numeroDocumento', 'minlength')">
+        Número documento requiere mínimo 3 caracteres
+      </p>
+    </div>
+
+    <button type="submit" class="btn btn-primary mt-2 mb-5 px-5">Enviar</button>
   </form>
 </div>

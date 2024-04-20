@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AlumnoModel } from '../../core/models/alumno.model';
 
 @Component({
   selector: 'app-listado',
@@ -8,5 +9,5 @@ import { Component } from '@angular/core';
   styleUrl: './listado.component.css'
 })
 export class ListadoComponent {
-
+  alumnos: AlumnoModel[] = [];
 }

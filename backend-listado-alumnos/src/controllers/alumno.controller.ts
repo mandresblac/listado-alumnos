@@ -46,3 +46,47 @@ export const getAlumnos = async (req: Request, resp: Response) => {
     })
   };
 };
+
+// UPDATE = actualizar un alumno, actualiza información en el servidor, metodo put
+export const updateAlumno = async(req: Request, resp: Response) => {
+  try {
+    const id = req.params.id; // id del alumno
+    const body = req.body; // Opción 1
+    // const { body } = req; // Opción 2, desestructuramos el body.
+
+    // El busca todos los alumnos
+    const alumnoActualizado = await AlumnoModel.findByIdAndUpdate( id, body, { new: true}); // findByIdAndUpdate recibe 3parametros
+
+    resp.status(200).json({
+      ok: true,
+      alumo: alumnoActualizado,
+
+    })
+  } catch (error) {
+    resp.status(400).json({
+      ok: false,
+      cmsg: "Error al consultar los alumnos"
+    })
+  };
+};
+
+// DELETE = eliminar. elimina información en el servidor, metodo delete
+export const deleteAlumno = async(req: Request, resp: Response) => {
+  try {
+    // id del cliente
+    const id = req.params.id;
+
+    // El busca todos los clientes
+    const alumnoEliminado = await AlumnoModel.findByIdAndDelete(id);
+
+    resp.status(200).json({
+      ok: true,
+      alumno: alumnoEliminado,
+    })
+  } catch (error) {
+    resp.status(400).json({
+      ok: false,
+      cmsg: "Error al consultar los alumnos"
+    })
+  };
+};
